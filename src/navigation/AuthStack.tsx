@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react'
 import AuthScreen from '../screen/AuthScreen';
-import DeviceScreen from '../screen/DeviceScreen';
+import ChatScreen from '../screen/ChatScreen';
+import DeviceScreen from '../screen/ChatScreen';
 import MenuScreen from '../screen/MenuScreen';
 
 const AuthStack = () => {
@@ -16,13 +17,12 @@ const AuthStack = () => {
   );
 
   return (
-      <Stack.Navigator  
-        screenOptions={{gestureEnabled: false, headerShown: false}}>
-        {_renderItemScreen('AuthScreen', AuthScreen)}
-        {_renderItemScreen('MenuScreen', MenuScreen)}
-        {_renderItemScreen('DeviceScreen', DeviceScreen)}
-
-      </Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{ gestureEnabled: false, headerShown: false }}>
+      {_renderItemScreen('AuthScreen', AuthScreen)}
+      {_renderItemScreen('MenuScreen', MenuScreen)}
+      {_renderItemScreen('ChatScreen', ChatScreen)}
+    </Stack.Navigator>
   )
 }
 

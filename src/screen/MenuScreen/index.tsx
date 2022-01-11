@@ -4,6 +4,7 @@ import { Alert, Image, KeyboardAvoidingView, Modal, StatusBar, StyleSheet, Text,
 import { useDispatch } from 'react-redux'
 import { color } from '../../assets/color'
 import { fontSize, height, width } from '../../assets/size'
+import call from "react-native-phone-call"
 
 const ERROR_MESSAGE = {
   emailValid: 'Email is invalid!',
@@ -11,26 +12,30 @@ const ERROR_MESSAGE = {
 
 const MenuScreen = () => {
   const navigation = useNavigation()
-  const [userName, setUserName] = useState('0329228927')
-  const [pass, setPass] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [seePass, setSeePass] = useState(false)
   const [modalVisible, setModalVisible] = useState(false)
+
 
   useEffect(() => {
     setModalVisible(true)
   }, [])
 
-  const loginByFirebase = async () => {
-    if (pass === '11011999') {
-      navigation.dispatch(
-        CommonActions.navigate({
-          name: 'MenuScreen',
-        }))
-    }
-    else {
+  const chatGao = () => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'AuthStack',
+      }))
+  }
 
+  const alert = () => {
+    Alert.alert("Hicccc...", "Gạo nô tài chưa kịp làm tính năng này, Pong iu đợi gạo update sau nha!")
+  }
+
+  const callGao = () => {
+    const phone = {
+      number: '0964913998',
+      prompt: false
     }
+    call(phone).catch(console.error)
   }
 
   return (
@@ -38,37 +43,30 @@ const MenuScreen = () => {
       <StatusBar
         animated={true}
         backgroundColor={color.pink}
-        // barStyle={statusBarStyle}
-        // showHideTransition={statusBarTransition}
         hidden={false} />
       <Image source={require('../../assets/icon/PongGao.png')} style={styles.logo} />
       <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Tên đăng nhập"
-          value={userName}
-          onChangeText={(value: string) => setUserName(value)}
-        />
-        <View style={styles.inputPass}>
-          <TextInput
-            secureTextEntry={seePass}
-            placeholder="Mật khẩu"
-            value={pass}
-            onChangeText={(value: string) => setPass(value)}
-            style={{ flex: 1 }}
-          />
-          <TouchableOpacity onPress={() => setSeePass(!seePass)}>
-            <Image source={require('../../assets/icon/eye.png')} style={styles.iconEye} />
 
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.errMess}>{errorMessage}</Text>
         <TouchableOpacity
-          onPress={() => loginByFirebase()}
+          onPress={() => navigation.dispatch(
+            CommonActions.navigate({
+              name: 'ChatScreen',
+            }))}
           style={styles.button}
         >
-          <Text style={styles.buttonTitle}>Xác nhận Pong iu</Text>
+          <Text style={styles.buttonTitle}>Chiện zới gạo robot</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => alert()}
+          style={styles.button}
+        >
+          <Text style={styles.buttonTitle}>Coi lại kỷ niệm</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => callGao()}
+          style={styles.button}
+        >
+          <Text style={styles.buttonTitle}>Gọi cho Gạo iu</Text>
         </TouchableOpacity>
       </View>
 

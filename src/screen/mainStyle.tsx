@@ -4,9 +4,9 @@ import { fontSize, height } from "../assets/size";
 
 export const mainStyle = StyleSheet.create({
     buttonTitle: {
-        color: 'white',
+        color: color.pinkStrong,
         fontSize: fontSize.content,
-        fontWeight: 'bold',
+        textDecorationLine: 'underline'
     },
     buttonContainer: {
         height: height.button,

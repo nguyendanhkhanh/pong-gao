@@ -17,7 +17,19 @@ export const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
     },
-    buttonAddContainer: {
+    buttonAddContainerRight: {
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        width: '100%',
+        padding: 20
+    },
+    buttonAddContainerLeft: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        width: '100%',
+        padding: 20
+    },
+    buttonAddContainerCenter: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
         width: '100%',
@@ -46,5 +58,21 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         paddingLeft: 10,
         borderRadius: 5
+    },
+    image: {
+        width: 200,
+        height: 200,
+        resizeMode: 'contain',
+    },
+    viewChatContainer: {
+        flex: 1,
+        width: widthDevice * 80 / 100,
+        alignItems: 'center'
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: widthDevice * 80 / 100,
+        marginBottom: 20
     }
 })
